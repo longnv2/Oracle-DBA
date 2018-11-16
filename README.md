@@ -6,9 +6,14 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 ### Oracle DBA
 ```markdown
 
-# 1. Managing Tablespaces And Datafiles
+# I. Managing Tablespaces And Datafiles
 
-# Header 1
+# 1. Create tablespace using commandline on windows
+1. login to sql-plus
+2. using command line:
+- create tablespace ica_lmts datafile 'E:\u02\oracle\ica\ica.dbf' size 50m extent management local autoallocate;
+
+
 # Header 2
 # Header 3
 
