@@ -92,4 +92,51 @@ SIZE 50G;
   - drop tablespace ica including contents;
   - drop tablespace ica including contents and datafiles;
 ```
+### View information and rename tablespaces and datafiles
+  - wiew tablespace
+``` markdown
+  - select * from dba_tablespaces 
+  - select * from v$tablespace
+```
+  - view datafile
+```markdown  
+  - select * from dba_data_files;
+  - select * from v$datafile;
+```
+  - view tempfiles
+```markdown
+  - select * from dba_temp_files;
+  - select * from v$tempfile;
+```
+  - view information from free space
+```markdown
+  - select * from dba_free_space;
+```
+  - view information from free tempfile;
+```markdown
+  - select * from v$temp_space_headers;
+```
 
+### Rename or Reloacting datafiles
+  - bring  the tablespace offline
+  ```markdown
+    alter tablespace offline;
+  ```
+  - copy file to new location using commandline
+  ``` markdown
+  cp location_datafile_old location_datafile_new
+  ```
+  - rename datafile
+  ``` markdown
+  mv datafile_1 datafile_2;
+  ```
+  
+  - rename and reloaction these file:
+  ``` markdown
+  alter tablespace users rename file  ‘/u01/oracle/ica/usr01.dbf’, ‘/u01/oracle/ica/usr02.dbf’ 
+  to	‘/u02/oracle/ica/usr01.dbf’, ’/u01/oracle/ica/users02.dbf’;
+  ```
+  - bring tablespace online
+  ```markdown
+  alter tablespace user online;
+  ```
