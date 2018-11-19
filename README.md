@@ -117,7 +117,7 @@ SIZE 50G;
   - select * from v$temp_space_headers;
 ```
 
-### Rename or Reloacting datafiles
+### Rename or Relocating datafiles
   - bring  the tablespace offline
   ```markdown
     alter tablespace offline;
