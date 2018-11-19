@@ -31,3 +31,34 @@ CREATE BIGFILE TABLESPACE ica_bigtbs
 DATAFILE 'E:\u02\oracle\ica\ica.dbf' 
 SIZE 50G;
 ```
+
+### Extending the Size of Tablespace and Datafiles
+  - Option 1: extend size of tablespace by increasing the size of datafile
+ ```markdown
+ alter  database ica datafile 'E:\u02\oracle\ica\ica.dbf' resize 100M;
+ ```
+  - Option 2: extend tablespace by adding new datafile to a tablespace
+  ```markdown
+  alter tablespace add datafile  'E:\u02\oracle\ica\ica2.dbf'  size 50M;
+  ```
+  - Option 3: extend tablespace using feature auto extend of datafile
+  ```markdown 
+  alter database datafile 'E:\u02\oracle\ica\ica2.dbf' 
+  auto extend ON next 5M maxsize 500M;
+  ```
+  ```markdown
+  create tablespace ica datafile 'E:\u02\oracle\ica\ica2.dbf' 
+  size 50M
+  auto extend ON next 5M maxsize 500M;
+```
+### Decrease the size of a tablespace
+- Using resize command to decrease size of tablespace
+  ```markdown
+  alter database datafile 'E:\u02\oracle\ica\ica2.dbf'      
+  resize 30M;
+  ```
+### Coalescing Tablespaces
+- use the ALTER TABLESPACE ... COALESCE statement to manually coalesce any adjacent free extents
+```markdown
+  alter tablespace ica coalesce;
+```
