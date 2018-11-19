@@ -62,3 +62,34 @@ SIZE 50G;
 ```markdown
   alter tablespace ica coalesce;
 ```
+
+### Taking tablespace online or offline
+```markdown
+  alter tablespace ica offline/online;
+```
+### Taking datafile online or offline
+```markdown
+  alter database datafile 'E:\u02\oracle\ica\ica2.dbf' online/offline;
+```
+
+### Marking a tablespace read only/write
+```markdown
+  alter tablespace ica_lmt read only;
+```
+
+```markdown
+  alter tablespace ica_lmt read write;
+```
+
+### Renaming  tablespaces
+```markdown
+  alter tablespace users rename to usersts;
+```
+
+### Drop tablespace
+```markdown
+  - drop tablespace ica_lmt;
+  - drop tablespace ica including contents;
+  - drop tablespace ica including contents and datafiles;
+```
+
