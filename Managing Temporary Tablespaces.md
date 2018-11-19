@@ -1,0 +1,36 @@
+# Oracle DBA
+## II: Managing Temporary Tablespaces in Oracle
+
+### Create temporary file
+- Temporary tablespace is used for sorting large tables. Every database should have one temporary tablespace.
+```markdown
+  create temporary tablespace temp tempfile 'E:\u02\oracle\ica\ica_temp.dbf'
+  size 100m
+  extent management local uniform size 5M;
+```
+- The extent management clause is optional for temporary tablespaces because all temporary tablespaces are created with locally managed extents of a uniform size.  
+- The AUTOALLOCATE clause is not allowed for temporary tablespaces.
+
+### Increating or Decreating the size of Temporary Tablespace
+- using resize command for increating/decreating
+
+```markdown
+  alter datafile tempfile 'E:\u02\oracle\ica\ica_temp.dbf' resize 18M;
+```
+
+- using drop clause for deletes the operating system
+```markdown
+  alter database tempfile 'E:\u02\oracle\ica\ica_temp.dbf' drop including datafiles;
+```
+
+### Creating a Temporary Tablespace Group
+- create group tablespace
+```markdown
+CREATE TEMPORARY TABLESPACE ica_temp2 
+TEMPFILE 'E:\u02\oracle\ica\ica_temp_2.dbf'
+SIZE 50M TABLESPACE GROUP group1;
+```
+- alter group tablespace
+```markdown
+  alter tablespace ica_temp2 group group2;
+```
